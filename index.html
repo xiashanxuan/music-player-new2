@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>音乐在线播放器</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 背景层 -->
+  <div class="bg-layer" id="bgLayer"></div>
+  <div class="bg-mask"></div>
+
+  <!-- 主容器 -->
+  <div class="main-container">
+
+    <!-- 顶部信息栏 -->
+    <div class="top-bar">
+      <div class="student-info">
+        <span>学号：24215220129</span>
+        <span>姓名：李钧涛</span>
+      </div>
+      <h1 class="site-title">音乐在线播放器</h1>
+      <div></div>
+    </div>
+
+    <!-- 中间展示区 -->
+    <div class="player-area">
+      <!-- 唱片区域 -->
+      <div class="record-section" id="recordSection">
+        <div class="record-wrapper" id="recordWrapper">
+          <div class="disc"></div>
+          <img src="img/record0.jpg" alt="唱片" class="record-img" id="recordImg">
+        </div>
+        <div class="song-info-display" id="songInfoDisplay">
+          <span class="song-name-display" id="songNameDisplay">歌曲名称 - 歌手</span>
+        </div>
+      </div>
+
+      <!-- MV区域（默认隐藏） -->
+      <div class="mv-section" id="mvSection" style="display:none;">
+        <video id="mvVideo" class="mv-video" controls>
+          <source src="mp4/video0.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- MV切换按钮 -->
+      <div class="mv-toggle" id="mvToggle" title="切换MV模式">
+        <img src="img/MV.png" alt="MV">
+        <span>MV</span>
+      </div>
+    </div>
+
+    <!-- 底部控制栏 -->
+    <div class="control-bar">
+      <!-- 进度条 -->
+      <div class="progress-section">
+        <span class="time-label" id="currentTime">00:00</span>
+        <div class="progress-bar" id="progressBar">
+          <div class="progress-fill" id="progressFill"></div>
+          <div class="progress-thumb" id="progressThumb"></div>
+        </div>
+        <span class="time-label" id="totalTime">00:00</span>
+      </div>
+
+      <!-- 按钮控制区 -->
+      <div class="btn-section">
+        <div class="left-controls">
+          <button class="ctrl-btn" id="btnPlaylist" title="播放列表">
+            <img src="img/列表.png" alt="列表">
+          </button>
+          <div class="mode-btns">
+            <img src="img/mode1.png" alt="模式1" class="mode-btn active" data-mode="0" title="列表循环">
+            <img src="img/mode2.png" alt="模式2" class="mode-btn" data-mode="1" title="单曲循环">
+            <img src="img/mode3.png" alt="模式3" class="mode-btn" data-mode="2" title="随机播放">
+          </div>
+        </div>
+
+        <div class="center-controls">
+          <button class="ctrl-btn" id="btnPrev" title="上一首">
+            <img src="img/上一首.png" alt="上一首">
+          </button>
+          <button class="ctrl-btn btn-play" id="btnPlay" title="播放/暂停">
+            <img src="img/暂停.png" alt="播放/暂停" id="btnPlayImg">
+          </button>
+          <button class="ctrl-btn" id="btnNext" title="下一首">
+            <img src="img/下一首.png" alt="下一首">
+          </button>
+        </div>
+
+        <div class="right-controls">
+          <button class="ctrl-btn" id="btnMute" title="静音">
+            <img src="img/音量.png" alt="音量" id="btnMuteImg">
+          </button>
+          <div class="volume-slider" id="volumeSlider">
+            <div class="volume-fill" id="volumeFill"></div>
+            <div class="volume-thumb" id="volumeThumb"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 播放列表面板 -->
+  <div class="playlist-panel" id="playlistPanel">
+    <div class="playlist-header">
+      <h3>播放列表</h3>
+      <button class="playlist-close" id="playlistClose">✕</button>
+    </div>
+    <ul class="playlist-items" id="playlistItems">
+      <li class="playlist-item active" data-index="0">
+        <span class="pl-index">01</span>
+        <span class="pl-name">Music 0 - Faded</span>
+        <span class="pl-duration">--</span>
+      </li>
+      <li class="playlist-item" data-index="1">
+        <span class="pl-index">02</span>
+        <span class="pl-name">Music 1 - Kiss Fight</span>
+        <span class="pl-duration">--</span>
+      </li>
+      <li class="playlist-item" data-index="2">
+        <span class="pl-index">03</span>
+        <span class="pl-name">Music 2 - Coming Home</span>
+        <span class="pl-duration">--</span>
+      </li>
+      <li class="playlist-item" data-index="3">
+        <span class="pl-index">04</span>
+        <span class="pl-name">Music 3 - Coming Home</span>
+        <span class="pl-duration">--</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 音频元素 -->
+  <audio id="audioPlayer" preload="auto"></audio>
+
+  <script src="js/player.js"></script>
+</body>
+</html>
